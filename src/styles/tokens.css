@@ -1,0 +1,78 @@
+/*
+  BOOKVERSE — TOKENS VISUAIS (provisório)
+  ----------------------------------------
+  Este arquivo é o sistema de design provisório do BookVerse, criado para
+  destravar o desenvolvimento do esqueleto da aplicação. Ele será revisado
+  e formalizado no Documento 07 — Sistema de Design (Volume 1 do Blueprint).
+
+  Conceito: "biblioteca à noite, sob a luz de um abajur".
+  - INK   = o ambiente noturno de leitura (fundo escuro principal)
+  - PAPER = a página (fundo claro, telas de conteúdo)
+  - LAMP  = o brilho do abajur (cor de ação/destaque principal)
+  - RIBBON= a fita de marcador de página (cor secundária, erros/alertas)
+  - LEAF  = sucesso, progresso, sequência mantida
+*/
+
+:root {
+  /* Cores — paleta nomeada */
+  --color-ink: #14182B;          /* fundo escuro principal */
+  --color-ink-soft: #1E2440;     /* superfícies sobre o ink */
+  --color-paper: #ECEAE3;        /* fundo claro principal */
+  --color-paper-soft: #F5F3ED;   /* superfícies sobre o paper */
+  --color-lamp: #E8A33D;         /* destaque primário (ações, foco) */
+  --color-lamp-strong: #CF8A22;  /* hover/active do destaque primário */
+  --color-ribbon: #D6483B;       /* secundário / erro / atenção */
+  --color-leaf: #5FA777;         /* sucesso / streak / progresso */
+
+  --color-text-on-ink: #F3F1EA;
+  --color-text-on-ink-muted: #9CA3C0;
+  --color-text-on-paper: #1B1E2E;
+  --color-text-on-paper-muted: #5B5F73;
+
+  --color-border-on-ink: rgba(243, 241, 234, 0.12);
+  --color-border-on-paper: rgba(27, 30, 46, 0.10);
+
+  /* Tipografia */
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  --fs-display-lg: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  --fs-display-md: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);
+  --fs-title: 1.25rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-caption: 0.75rem;
+
+  /* Espaçamento (escala de 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Raio e elevação */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 8px 24px rgba(20, 24, 43, 0.10);
+  --shadow-lifted: 0 16px 40px rgba(20, 24, 43, 0.18);
+
+  /* Transições */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+}
+
+/* Respeitar usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

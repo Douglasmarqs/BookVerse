@@ -1,0 +1,27 @@
+rules_version = '2';
+
+// BookVerse — Regras de segurança do Firestore (versão inicial)
+//
+// Cobre apenas a coleção "users" criada pelo cadastro. Será expandida
+// no Documento 11 — Segurança, conforme novas coleções (livros,
+// clubes, mensagens, etc.) forem adicionadas. O princípio geral:
+// por padrão, NADA é público; cada coleção precisa de uma regra
+// explícita.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{userId} {
+      // Qualquer pessoa autenticada pode ler perfis (necessário para
+      // telas sociais futuras). Apenas o próprio usuário pode escrever
+      // no seu documento.
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Bloqueio padrão para qualquer coleção ainda não mapeada.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
