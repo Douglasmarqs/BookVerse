@@ -7,6 +7,8 @@ import Onboarding from './pages/Onboarding'
 import Login from './pages/Login'
 import Cadastro from './pages/Cadastro'
 import Dashboard from './pages/Dashboard'
+import Biblioteca from './pages/Biblioteca'
+import LivroDetalhe from './pages/LivroDetalhe'
 
 export default function App() {
   return (
@@ -22,6 +24,22 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/biblioteca"
+            element={
+              <ProtectedRoute>
+                <Biblioteca />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/biblioteca/:bookId"
+            element={
+              <ProtectedRoute>
+                <LivroDetalhe />
               </ProtectedRoute>
             }
           />

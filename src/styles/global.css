@@ -258,6 +258,200 @@ a {
   font-weight: 600;
 }
 
+/* ---------- Segmented control (filtros da Biblioteca) ---------- */
+
+.bv-segmented {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: var(--space-5);
+}
+
+.bv-segmented::-webkit-scrollbar {
+  display: none;
+}
+
+.bv-chip {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-on-paper);
+  background: var(--color-paper-soft);
+  color: var(--color-text-on-paper-muted);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.bv-chip--active {
+  background: var(--color-lamp);
+  color: var(--color-ink);
+  border-color: var(--color-lamp);
+}
+
+/* ---------- Lista da Biblioteca ---------- */
+
+.bv-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.bv-book-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: var(--color-paper-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  text-align: left;
+  border: none;
+  width: 100%;
+}
+
+.bv-book-cover {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 60px;
+  border-radius: 6px;
+  background: var(--color-lamp);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-ink);
+  font-size: 1.1rem;
+}
+
+.bv-book-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bv-book-title {
+  font-weight: 600;
+  font-size: var(--fs-body);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bv-book-author {
+  font-size: var(--fs-small);
+  color: var(--color-text-on-paper-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Barra de progresso ---------- */
+
+.bv-progress-track {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border-on-paper);
+  overflow: hidden;
+}
+
+.bv-progress-fill {
+  height: 100%;
+  background: var(--color-lamp);
+  border-radius: var(--radius-pill);
+  transition: width var(--duration-base) var(--ease-standard);
+}
+
+.bv-progress-fill--done {
+  background: var(--color-leaf);
+}
+
+/* ---------- Estado vazio ---------- */
+
+.bv-empty-state {
+  text-align: center;
+  padding: var(--space-7) var(--space-4);
+}
+
+/* ---------- Modal (bottom sheet) ---------- */
+
+.bv-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 24, 43, 0.55);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 50;
+  animation: bv-fade-in var(--duration-base) var(--ease-standard);
+}
+
+.bv-modal-sheet {
+  background: var(--color-paper);
+  width: 100%;
+  max-width: 480px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--space-6) var(--space-5);
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+@keyframes bv-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Botão flutuante (adicionar) ---------- */
+
+.bv-fab {
+  position: fixed;
+  bottom: 88px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-lamp);
+  color: var(--color-ink);
+  border: none;
+  font-size: 1.75rem;
+  box-shadow: var(--shadow-lifted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Cabeçalho de tela de detalhe (com voltar) ---------- */
+
+.bv-page-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 20px;
+}
+
+.bv-back-button {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--color-text-on-paper);
+  padding: 4px;
+}
+
 /* ---------- Responsividade base ---------- */
 /* Breakpoints alvo definidos no Documento 27 — Responsividade:
    320 / 375 / 390 / 414 / 768 / 834 / 1024 / 1280 / 1440 / 1920 */

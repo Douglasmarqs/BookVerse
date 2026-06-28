@@ -17,6 +17,14 @@ service cloud.firestore {
       // no seu documento.
       allow read: if request.auth != null;
       allow write: if request.auth != null && request.auth.uid == userId;
+
+      // Biblioteca pessoal (users/{userId}/books/{bookId}): só o
+      // próprio usuário pode ler ou escrever — sem leitura social aqui
+      // (isso é decidido caso a caso quando o Sistema Social for
+      // construído, Documento 15).
+      match /books/{bookId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
     }
 
     // Bloqueio padrão para qualquer coleção ainda não mapeada.
