@@ -10,6 +10,7 @@ import { useAuth } from '../context/AuthContext'
 import { Field } from '../components/Field'
 import { Button } from '../components/Button'
 import { BookVerseLogo } from '../components/BookVerseLogo'
+import { GoogleSignInButton } from '../components/GoogleSignInButton'
 
 function mapFirebaseError(code) {
   switch (code) {
@@ -27,7 +28,7 @@ function mapFirebaseError(code) {
 }
 
 export default function Cadastro() {
-  const { signup } = useAuth()
+  const { signup, loginWithGoogle } = useAuth()
   const navigate = useNavigate()
 
   const [name, setName] = useState('')
@@ -36,6 +37,7 @@ export default function Cadastro() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [googleLoading, setGoogleLoading] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -62,6 +64,17 @@ export default function Cadastro() {
       setError(mapFirebaseError(err.code))
     } finally {
       setLoading(false)
+    }
+  }
+
+  async function handleGoogleSignup() {
+    setError('')
+    setGoogleLoading(true)
+    try {
+      await loginWithGoogle()
+    } catch (err) {
+      setError('Não foi possível conectar com o Google agora. Tente de novo.')
+      setGoogleLoading(false)
     }
   }
 
@@ -110,6 +123,12 @@ export default function Cadastro() {
               Criar conta
             </Button>
           </form>
+
+          <div className="bv-divider">
+            <span>ou</span>
+          </div>
+
+          <GoogleSignInButton onClick={handleGoogleSignup} loading={googleLoading} />
 
           <p className="bv-text-muted" style={{ marginTop: 24 }}>
             Já tem conta?{' '}

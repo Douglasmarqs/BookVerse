@@ -76,3 +76,20 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---------- Modo escuro ---------- */
+/* Aplicado via classe no <body> pelo ThemeContext. Sobrescrever as
+   variáveis "on-paper" é suficiente: todo componente que já usa essas
+   variáveis (cards, inputs, chips, listas) escurece automaticamente. */
+
+body.bv-theme-dark {
+  --color-paper: var(--color-ink);
+  --color-paper-soft: var(--color-ink-soft);
+  --color-text-on-paper: var(--color-text-on-ink);
+  --color-text-on-paper-muted: var(--color-text-on-ink-muted);
+  --color-border-on-paper: var(--color-border-on-ink);
+}
+
+body {
+  transition: background-color var(--duration-base) var(--ease-standard);
+}

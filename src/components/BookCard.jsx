@@ -13,9 +13,13 @@ export function BookCard({ book, onClick }) {
 
   return (
     <button className="bv-book-card" onClick={onClick}>
-      <span className="bv-book-cover" aria-hidden="true">
-        {initial}
-      </span>
+      {book.coverUrl ? (
+        <img className="bv-book-cover bv-book-cover--image" src={book.coverUrl} alt="" aria-hidden="true" />
+      ) : (
+        <span className="bv-book-cover" aria-hidden="true">
+          {initial}
+        </span>
+      )}
       <span className="bv-book-info">
         <span className="bv-book-title">{book.title}</span>
         <span className="bv-book-author">

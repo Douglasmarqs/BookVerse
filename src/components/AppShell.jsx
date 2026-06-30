@@ -11,7 +11,7 @@ import { BookVerseLogo } from './BookVerseLogo'
 const TABS = [
   { key: 'home', label: 'Início', path: '/dashboard' },
   { key: 'library', label: 'Biblioteca', path: '/biblioteca' },
-  { key: 'lumi', label: 'Lumi', path: null },
+  { key: 'lumi', label: 'Lumi', path: '/lumi' },
   { key: 'social', label: 'Social', path: null },
   { key: 'profile', label: 'Perfil', path: null },
 ]
@@ -22,8 +22,22 @@ export function AppShell({ children }) {
 
   return (
     <div className="bv-screen">
-      <header style={{ padding: '20px 20px 0' }}>
+      <header
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '20px 20px 0',
+        }}
+      >
         <BookVerseLogo />
+        <button
+          className="bv-settings-button"
+          onClick={() => navigate('/configuracoes')}
+          aria-label="Configurações"
+        >
+          ⚙
+        </button>
       </header>
 
       <main style={{ flex: 1 }}>{children}</main>

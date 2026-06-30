@@ -1,9 +1,9 @@
 // BookVerse — Login
 //
-// Estados cobertos nesta primeira versão: campos vazios, e-mail
-// inválido, senha incorreta, usuário inexistente, e erro genérico de
-// rede/Firebase indisponível. Recuperação de senha fica para o
-// Documento 19 — Perfil / Segurança (ainda não implementada aqui).
+// Estados cobertos: campos vazios, e-mail inválido, senha incorreta,
+// usuário inexistente, erro genérico de rede/Firebase indisponível, e
+// falha no login com Google. Recuperação de senha tem tela própria
+// (/recuperar-senha).
 
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -11,6 +11,7 @@ import { useAuth } from '../context/AuthContext'
 import { Field } from '../components/Field'
 import { Button } from '../components/Button'
 import { BookVerseLogo } from '../components/BookVerseLogo'
+import { GoogleSignInButton } from '../components/GoogleSignInButton'
 
 function mapFirebaseError(code) {
   switch (code) {
@@ -31,12 +32,13 @@ function mapFirebaseError(code) {
 }
 
 export default function Login() {
-  const { login } = useAuth()
+  const { login, loginWithGoogle } = useAuth()
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [googleLoading, setGoogleLoading] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -55,6 +57,19 @@ export default function Login() {
       setError(mapFirebaseError(err.code))
     } finally {
       setLoading(false)
+    }
+  }
+
+  async function handleGoogleLogin() {
+    setError('')
+    setGoogleLoading(true)
+    try {
+      await loginWithGoogle()
+      // A página é redirecionada para o Google e volta sozinha — não há
+      // mais nada a fazer aqui depois desta chamada.
+    } catch (err) {
+      setError('Não foi possível conectar com o Google agora. Tente de novo.')
+      setGoogleLoading(false)
     }
   }
 
@@ -88,12 +103,28 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
 
+            <p style={{ textAlign: 'right', marginTop: -8, marginBottom: 20 }}>
+              <Link
+                to="/recuperar-senha"
+                className="bv-text-muted"
+                style={{ fontSize: '0.85rem', fontWeight: 600 }}
+              >
+                Esqueceu sua senha?
+              </Link>
+            </p>
+
             {error && <p className="bv-error-text">{error}</p>}
 
             <Button type="submit" loading={loading}>
               Entrar
             </Button>
           </form>
+
+          <div className="bv-divider">
+            <span>ou</span>
+          </div>
+
+          <GoogleSignInButton onClick={handleGoogleLogin} loading={googleLoading} />
 
           <p className="bv-text-muted" style={{ marginTop: 24 }}>
             Ainda não tem conta?{' '}

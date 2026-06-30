@@ -8,19 +8,67 @@
 // está especificado no módulo "Minha Conta" (Documento 19 — Perfil).
 // Mais campos serão adicionados conforme as telas de edição de perfil
 // forem desenvolvidas.
+//
+// Login com Google usa signInWithRedirect (não signInWithPopup). Motivo:
+// popups têm comportamento instável em PWAs instaladas no iOS (Safari em
+// modo standalone frequentemente bloqueia ou falha ao abrir popup) — o
+// fluxo de redirecionamento funciona de forma consistente em todos os
+// contextos (navegador normal, PWA instalada, Android, iOS).
+//
+// Login com Apple NÃO foi implementado: exige inscrição paga no Apple
+// Developer Program (US$ 99/ano) para configurar "Sign in with Apple" —
+// não faz sentido implementar um botão que não vai funcionar sem essa
+// conta. Fica documentado aqui como decisão consciente, não esquecimento.
 
 import { createContext, useContext, useEffect, useState } from 'react'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithRedirect,
+  getRedirectResult,
+  GoogleAuthProvider,
+  sendPasswordResetEmail,
   signOut,
   onAuthStateChanged,
   updateProfile,
 } from 'firebase/auth'
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { auth, db } from '../firebase/config'
 
 const AuthContext = createContext(null)
+const googleProvider = new GoogleAuthProvider()
+
+// Cria o documento de perfil no Firestore só se ele ainda não existir —
+// usado tanto no cadastro por e-mail quanto no primeiro login via Google
+// (onde não existe uma etapa de "cadastro" separada).
+async function ensureUserProfile(user, { name } = {}) {
+  const userRef = doc(db, 'users', user.uid)
+  const existing = await getDoc(userRef)
+  if (existing.exists()) return
+
+  await setDoc(userRef, {
+    name: name || user.displayName || '',
+    email: user.email,
+    username: null,
+    bio: '',
+    photoURL: user.photoURL || null,
+    favoriteGenres: [],
+    favoriteAuthors: [],
+    preferences: {
+      theme: 'auto',
+      language: 'pt-BR',
+      notificationsEnabled: true,
+      soundEnabled: true,
+      dailyGoalPages: 20,
+    },
+    stats: {
+      streakCount: 0,
+      booksFinished: 0,
+      pagesRead: 0,
+    },
+    createdAt: serverTimestamp(),
+  })
+}
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null)
@@ -34,33 +82,25 @@ export function AuthProvider({ children }) {
     return unsubscribe
   }, [])
 
+  // Completa o fluxo de login com Google após o redirecionamento de volta
+  // ao app. Roda uma vez, na montagem do provider.
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          return ensureUserProfile(result.user)
+        }
+      })
+      .catch(() => {
+        // Falha no redirecionamento (ex: usuário cancelou) — silenciosa
+        // aqui; a tela de Login trata erros do clique inicial separadamente.
+      })
+  }, [])
+
   async function signup({ name, email, password }) {
     const credential = await createUserWithEmailAndPassword(auth, email, password)
     await updateProfile(credential.user, { displayName: name })
-
-    // Documento inicial do usuário no Firestore — base do módulo "Minha Conta"
-    await setDoc(doc(db, 'users', credential.user.uid), {
-      name,
-      email,
-      username: null,
-      bio: '',
-      photoURL: null,
-      favoriteGenres: [],
-      favoriteAuthors: [],
-      preferences: {
-        theme: 'auto',
-        language: 'pt-BR',
-        notificationsEnabled: true,
-        soundEnabled: true,
-      },
-      stats: {
-        streakCount: 0,
-        booksFinished: 0,
-        pagesRead: 0,
-      },
-      createdAt: serverTimestamp(),
-    })
-
+    await ensureUserProfile(credential.user, { name })
     return credential.user
   }
 
@@ -69,8 +109,27 @@ export function AuthProvider({ children }) {
     return credential.user
   }
 
+  async function loginWithGoogle() {
+    await signInWithRedirect(auth, googleProvider)
+    // O app recarrega após o redirecionamento; o resultado é tratado no
+    // useEffect de getRedirectResult acima.
+  }
+
   async function logout() {
     await signOut(auth)
+  }
+
+  // Não revela se o e-mail existe ou não na base — isso evita que alguém
+  // use o formulário de recuperação para descobrir quais e-mails têm
+  // conta no BookVerse (account enumeration). Erros de formato de e-mail
+  // ou de rede ainda são informados normalmente.
+  async function resetPassword(email) {
+    try {
+      await sendPasswordResetEmail(auth, email)
+    } catch (err) {
+      if (err.code === 'auth/user-not-found') return // finge sucesso
+      throw err
+    }
   }
 
   const value = {
@@ -78,7 +137,9 @@ export function AuthProvider({ children }) {
     authLoading,
     signup,
     login,
+    loginWithGoogle,
     logout,
+    resetPassword,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

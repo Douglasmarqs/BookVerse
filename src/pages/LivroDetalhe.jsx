@@ -107,12 +107,23 @@ export default function LivroDetalhe() {
       </div>
 
       <div className="bv-container" style={{ paddingBottom: 60 }}>
-        <h1 className="bv-display" style={{ fontSize: '1.75rem' }}>
-          {book.title}
-        </h1>
-        <p className="bv-text-muted" style={{ marginTop: 4, marginBottom: 24 }}>
-          {book.author} · {STATUS_LABEL[book.status] || book.status}
-        </p>
+        <div style={{ display: 'flex', gap: 16, marginBottom: 20 }}>
+          {book.coverUrl && <img src={book.coverUrl} alt="" className="bv-confirm-cover" />}
+          <div>
+            <h1 className="bv-display" style={{ fontSize: '1.5rem' }}>
+              {book.title}
+            </h1>
+            <p className="bv-text-muted" style={{ marginTop: 4 }}>
+              {book.author} · {STATUS_LABEL[book.status] || book.status}
+            </p>
+          </div>
+        </div>
+
+        {book.description && (
+          <p className="bv-text-muted" style={{ marginBottom: 24, lineHeight: 1.6 }}>
+            {book.description.length > 280 ? `${book.description.slice(0, 280)}…` : book.description}
+          </p>
+        )}
 
         {book.totalPages > 0 && (
           <div style={{ marginBottom: 24 }}>

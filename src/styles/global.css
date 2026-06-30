@@ -452,6 +452,342 @@ a {
   padding: 4px;
 }
 
+/* ---------- Estatísticas do Dashboard ---------- */
+
+.bv-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.bv-stat-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--color-paper-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-2);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.bv-stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-lamp-strong);
+}
+
+.bv-stat-label {
+  font-size: var(--fs-caption);
+  color: var(--color-text-on-paper-muted);
+}
+
+/* ---------- PWA: prompt de instalação ---------- */
+
+.bv-install-card {
+  position: fixed;
+  left: var(--space-4);
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  background: var(--color-ink);
+  color: var(--color-text-on-ink);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-lifted);
+  max-width: 480px;
+  margin: 0 auto;
+  animation: bv-slide-up var(--duration-base) var(--ease-standard);
+}
+
+@keyframes bv-slide-up {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.bv-install-dismiss {
+  background: none;
+  border: none;
+  color: var(--color-text-on-ink-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* ---------- PWA: aviso de nova versão ---------- */
+
+.bv-update-toast {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  background: var(--color-lamp);
+  color: var(--color-ink);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-lifted);
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.bv-update-toast-button {
+  background: var(--color-ink);
+  color: var(--color-text-on-ink);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ---------- Configurações ---------- */
+
+.bv-settings-label {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text-on-paper-muted);
+  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.bv-settings-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-on-paper);
+  background: var(--color-paper-soft);
+  color: var(--color-text-on-paper);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bv-toggle-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  background: var(--color-paper-soft);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+}
+
+.bv-switch {
+  flex-shrink: 0;
+  width: 46px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border-on-paper);
+  position: relative;
+  transition: background-color var(--duration-base) var(--ease-standard);
+}
+
+.bv-switch--on {
+  background: var(--color-lamp);
+}
+
+.bv-switch-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-paper);
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+.bv-switch--on .bv-switch-knob {
+  transform: translateX(20px);
+}
+
+.bv-book-cover--image {
+  object-fit: cover;
+}
+
+/* ---------- Busca de livros (API) ---------- */
+
+.bv-search-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-height: 320px;
+  overflow-y: auto;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.bv-search-result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-paper);
+  border: 1px solid var(--color-border-on-paper);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.bv-search-result-cover {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 50px;
+  border-radius: 4px;
+  object-fit: cover;
+  background: var(--color-lamp);
+}
+
+.bv-search-result-cover--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.bv-search-result-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.bv-search-result-title {
+  font-weight: 600;
+  font-size: var(--fs-small);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bv-link-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  color: var(--color-lamp-strong);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  cursor: pointer;
+  padding: var(--space-2);
+}
+
+.bv-confirm-cover {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 90px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: var(--color-lamp);
+}
+
+.bv-confirm-cover--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-ink);
+}
+
+/* ---------- Card da Lumi (Dashboard) ---------- */
+
+.bv-lumi-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-paper-soft);
+  border: 1px solid var(--color-border-on-paper);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  text-align: left;
+}
+
+.bv-lumi-card-text {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ---------- Divisor "ou" (telas de Login/Cadastro) ---------- */
+
+.bv-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+  color: var(--color-text-on-paper-muted);
+  font-size: var(--fs-small);
+}
+
+.bv-divider::before,
+.bv-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-on-paper);
+}
+
+/* ---------- Botão de login com Google ---------- */
+
+.bv-google-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 13px var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-on-paper);
+  background: var(--color-paper-soft);
+  color: var(--color-text-on-paper);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bv-google-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* ---------- Responsividade base ---------- */
 /* Breakpoints alvo definidos no Documento 27 — Responsividade:
    320 / 375 / 390 / 414 / 768 / 834 / 1024 / 1280 / 1440 / 1920 */
