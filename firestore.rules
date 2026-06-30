@@ -1,32 +1,8 @@
 rules_version = '2';
 
-// BookVerse — Regras de segurança do Firestore
-//
-// Documento 11 — Segurança. Princípio geral: por padrão, NADA é público;
-// cada coleção precisa de uma regra explícita.
-//
-// MUDANÇA IMPORTANTE nesta versão: o campo "stats" (streak, páginas lidas,
-// livros concluídos) e a coleção "readingLog" não podem mais ser escritos
-// pelo cliente — só pela Cloud Function "onBookProgressUpdate" (que usa o
-// Admin SDK e ignora estas regras). Antes, qualquer pessoa com acesso ao
-// DevTools do navegador podia forjar esses valores direto no Firestore.
-// Ver /functions/index.js para a lógica que agora calcula isso no
-// servidor.
-//
-// ATENÇÃO — ORDEM DE DEPLOY: estas regras só devem ser publicadas DEPOIS
-// que a Cloud Function "onBookProgressUpdate" já estiver no ar. Se você
-// publicar isto antes de fazer o deploy da função, o streak e as páginas
-// lidas vão parar de atualizar (porque ninguém mais vai poder escrever
-// nesses campos) até a função ser publicada. Veja o README para o passo a
-// passo completo.
-
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Validação básica de um documento de livro: impede valores absurdos
-    // (página negativa, página maior que o total, título vazio ou
-    // gigante, total de páginas maior que qualquer livro real, status
-    // inválido).
     function isValidBook(data) {
       return data.title is string && data.title.size() > 0 && data.title.size() < 300
         && data.author is string && data.author.size() < 300
@@ -37,26 +13,18 @@ service cloud.firestore {
     }
 
     match /users/{userId} {
-      // Qualquer pessoa autenticada pode ler perfis (necessário para
-      // telas sociais futuras).
       allow read: if request.auth != null;
 
-      // Criação do perfil (cadastro): só o próprio usuário, e só com
-      // stats zerado — impede começar a "conta" já com valores forjados.
       allow create: if request.auth != null
         && request.auth.uid == userId
         && request.resource.data.stats.pagesRead == 0
         && request.resource.data.stats.streakCount == 0
         && request.resource.data.stats.booksFinished == 0;
 
-      // Atualização: o próprio usuário pode mexer no perfil (nome, bio,
-      // preferências, etc.), MAS NÃO no campo "stats" — isso só a Cloud
-      // Function pode alterar.
       allow update: if request.auth != null
         && request.auth.uid == userId
         && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['stats']);
 
-      // Biblioteca pessoal (users/{userId}/books/{bookId}).
       match /books/{bookId} {
         allow read, delete: if request.auth != null && request.auth.uid == userId;
         allow create, update: if request.auth != null
@@ -64,15 +32,12 @@ service cloud.firestore {
           && isValidBook(request.resource.data);
       }
 
-      // Registro diário de páginas lidas (base do streak/heatmap).
-      // Só leitura para o cliente — quem escreve é a Cloud Function.
       match /readingLog/{logId} {
         allow read: if request.auth != null && request.auth.uid == userId;
         allow write: if false;
       }
     }
 
-    // Bloqueio padrão para qualquer coleção ainda não mapeada.
     match /{document=**} {
       allow read, write: if false;
     }
