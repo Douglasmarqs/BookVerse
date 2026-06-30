@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default ": "bookverse-8147a"
+    "default ": "bookverse-8147a",
+    "default": "bookverse-8147a"
   },
   "targets": {},
   "etags": {}

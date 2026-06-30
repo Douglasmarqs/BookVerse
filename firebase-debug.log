@@ -1,0 +1,378 @@
+[debug] [2026-06-30T23:18:12.541Z] ----------------------------------------------------------------------
+[debug] [2026-06-30T23:18:12.543Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Douglas\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2026-06-30T23:18:12.544Z] CLI Version:   15.22.4
+[debug] [2026-06-30T23:18:12.544Z] Platform:      win32
+[debug] [2026-06-30T23:18:12.544Z] Node Version:  v22.16.0
+[debug] [2026-06-30T23:18:12.544Z] Detected Agent: unknown
+[debug] [2026-06-30T23:18:12.544Z] Time:          Tue Jun 30 2026 20:18:12 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-30T23:18:12.544Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-06-30T23:18:14.854Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-30T23:18:14.854Z] > authorizing via signed-in user (douglas1201.santos@gmail.com)
+[debug] [2026-06-30T23:18:14.854Z] [iam] checking project bookverse-8147a for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2026-06-30T23:18:14.855Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:14.855Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:14.856Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions [none]
+[debug] [2026-06-30T23:18:14.856Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:18:14.856Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-06-30T23:18:15.851Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions 200
+[debug] [2026-06-30T23:18:15.851Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-06-30T23:18:15.852Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:15.852Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:15.852Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/bookverse-8147a/serviceAccounts/bookverse-8147a@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-06-30T23:18:15.852Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/bookverse-8147a/serviceAccounts/bookverse-8147a@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-06-30T23:18:16.816Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/bookverse-8147a/serviceAccounts/bookverse-8147a@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2026-06-30T23:18:16.816Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/bookverse-8147a/serviceAccounts/bookverse-8147a@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'bookverse-8147a'...
+[info] 
+[info] i  deploying functions 
+[debug] [2026-06-30T23:18:16.819Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:16.819Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:16.819Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a [none]
+[debug] [2026-06-30T23:18:17.035Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a 200
+[debug] [2026-06-30T23:18:17.035Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a {"projectNumber":"444153208139","projectId":"bookverse-8147a","lifecycleState":"ACTIVE","name":"BookVerse","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-06-28T16:27:34.659Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2026-06-30T23:18:17.037Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:17.037Z] Checked if tokens are valid: true, expires at: 1782865006832
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2026-06-30T23:18:17.038Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:17.038Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:17.038Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbuild.googleapis.com [none]
+[debug] [2026-06-30T23:18:17.038Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbuild.googleapis.com  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:18:17.039Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/artifactregistry.googleapis.com [none]
+[debug] [2026-06-30T23:18:17.039Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/artifactregistry.googleapis.com  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:18:18.166Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbuild.googleapis.com 200
+[debug] [2026-06-30T23:18:18.166Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbuild.googleapis.com [omitted]
+[warn] !  functions: missing required API cloudbuild.googleapis.com. Enabling now... 
+[debug] [2026-06-30T23:18:18.167Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:18.167Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:18.167Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbuild.googleapis.com:enable [none]
+[debug] [2026-06-30T23:18:18.167Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbuild.googleapis.com:enable  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:18:18.177Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/artifactregistry.googleapis.com 200
+[debug] [2026-06-30T23:18:18.177Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/artifactregistry.googleapis.com [omitted]
+[warn] !  artifactregistry: missing required API artifactregistry.googleapis.com. Enabling now... 
+[debug] [2026-06-30T23:18:18.178Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:18.178Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:18.178Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/artifactregistry.googleapis.com:enable [none]
+[debug] [2026-06-30T23:18:18.178Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/artifactregistry.googleapis.com:enable  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:18:18.879Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbuild.googleapis.com:enable 200
+[debug] [2026-06-30T23:18:18.880Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbuild.googleapis.com:enable [omitted]
+[debug] [2026-06-30T23:18:19.042Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/artifactregistry.googleapis.com:enable 200
+[debug] [2026-06-30T23:18:19.042Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/artifactregistry.googleapis.com:enable [omitted]
+[debug] [2026-06-30T23:18:29.049Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:29.049Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:29.049Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/bookverse-8147a/adminSdkConfig [none]
+[debug] [2026-06-30T23:18:29.520Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/bookverse-8147a/adminSdkConfig 200
+[debug] [2026-06-30T23:18:29.520Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/bookverse-8147a/adminSdkConfig {"projectId":"bookverse-8147a","storageBucket":"bookverse-8147a.firebasestorage.app"}
+[debug] [2026-06-30T23:18:29.520Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:29.520Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:29.520Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/bookverse-8147a/configs [none]
+[debug] [2026-06-30T23:18:30.704Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/bookverse-8147a/configs 200
+[debug] [2026-06-30T23:18:30.705Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/bookverse-8147a/configs {}
+[debug] [2026-06-30T23:18:30.706Z] Validating nodejs source
+[warn] !  functions: Runtime Node.js 20 was deprecated on 2026-04-30 and will be decommissioned on 2026-10-30, after which you will not be able to deploy without upgrading. Consider upgrading now to avoid disruption. See https://cloud.google.com/functions/docs/runtime-support for full details on the lifecycle policy 
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2026-06-30T23:18:31.729Z] > [functions] package.json contents: {
+  "name": "bookverse-functions",
+  "description": "Cloud Functions do BookVerse — validação server-side de progresso de leitura",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "lint": "echo \"(sem linter configurado ainda)\"",
+    "deploy": "firebase deploy --only functions"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0"
+  }
+}
+[debug] [2026-06-30T23:18:31.730Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2026-06-30T23:18:31.731Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-06-30T23:18:31.740Z] Found firebase-functions binary at 'C:\Users\Douglas\OneDrive\Documents\BookVerse\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8306
+
+[debug] [2026-06-30T23:18:32.447Z] Got response from /__/functions.yaml {"endpoints":{"onBookProgressUpdate":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.updated","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"users/{userId}/books/{bookId}"},"retry":false},"entryPoint":"onBookProgressUpdate"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2026-06-30T23:18:36.467Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:36.468Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:36.468Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/bookverse-8147a/locations/-/functions [none]
+[debug] [2026-06-30T23:18:37.567Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/bookverse-8147a/locations/-/functions 200
+[debug] [2026-06-30T23:18:37.567Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/bookverse-8147a/locations/-/functions {}
+[debug] [2026-06-30T23:18:37.567Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:37.567Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:37.567Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2026-06-30T23:18:38.902Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/-/functions 200
+[debug] [2026-06-30T23:18:38.902Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/-/functions {}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2026-06-30T23:18:38.903Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:38.903Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:38.904Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/firebaseextensions.googleapis.com [none]
+[debug] [2026-06-30T23:18:38.904Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/firebaseextensions.googleapis.com  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:18:39.963Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/firebaseextensions.googleapis.com 200
+[debug] [2026-06-30T23:18:39.963Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/firebaseextensions.googleapis.com [omitted]
+[warn] !  extensions: missing required API firebaseextensions.googleapis.com. Enabling now... 
+[debug] [2026-06-30T23:18:39.963Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:39.963Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:39.963Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/firebaseextensions.googleapis.com:enable [none]
+[debug] [2026-06-30T23:18:39.963Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/firebaseextensions.googleapis.com:enable  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:18:40.613Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/firebaseextensions.googleapis.com:enable 200
+[debug] [2026-06-30T23:18:40.613Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/firebaseextensions.googleapis.com:enable [omitted]
+[debug] [2026-06-30T23:18:50.626Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-30T23:18:50.627Z] > authorizing via signed-in user (douglas1201.santos@gmail.com)
+[debug] [2026-06-30T23:18:50.627Z] [iam] checking project bookverse-8147a for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2026-06-30T23:18:50.627Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:50.627Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:50.627Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions [none]
+[debug] [2026-06-30T23:18:50.627Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:18:50.627Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2026-06-30T23:18:51.503Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions 200
+[debug] [2026-06-30T23:18:51.503Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2026-06-30T23:18:51.503Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:51.503Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:51.503Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/bookverse-8147a/instances pageSize=100&pageToken=
+[debug] [2026-06-30T23:18:54.004Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/bookverse-8147a/instances 200
+[debug] [2026-06-30T23:18:54.004Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/bookverse-8147a/instances {}
+[debug] [2026-06-30T23:18:54.005Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:54.005Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:54.005Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/bookverse-8147a/databases/(default) [none]
+[debug] [2026-06-30T23:18:55.092Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/bookverse-8147a/databases/(default) 200
+[debug] [2026-06-30T23:18:55.092Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/bookverse-8147a/databases/(default) {"name":"projects/bookverse-8147a/databases/(default)","uid":"346d408d-eb34-42f8-a974-8f97381f009b","createTime":"2026-06-28T16:31:07.313210Z","updateTime":"2026-06-28T16:31:07.313210Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-06-30T22:19:34.855366Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IJKw6faMsJUDMPSMpbm3qpUD"}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\Douglas\OneDrive\Documents\BookVerse\functions (31.65 KB) for uploading 
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[debug] [2026-06-30T23:18:55.117Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:55.117Z] Checked if tokens are valid: true, expires at: 1782865006832
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[debug] [2026-06-30T23:18:55.117Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:55.117Z] Checked if tokens are valid: true, expires at: 1782865006832
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[debug] [2026-06-30T23:18:55.118Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:55.118Z] Checked if tokens are valid: true, expires at: 1782865006832
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[debug] [2026-06-30T23:18:55.118Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:55.118Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:55.118Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/run.googleapis.com [none]
+[debug] [2026-06-30T23:18:55.119Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/run.googleapis.com  x-goog-user-project=444153208139
+[debug] [2026-06-30T23:18:55.119Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/eventarc.googleapis.com [none]
+[debug] [2026-06-30T23:18:55.119Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/eventarc.googleapis.com  x-goog-user-project=444153208139
+[debug] [2026-06-30T23:18:55.120Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/pubsub.googleapis.com [none]
+[debug] [2026-06-30T23:18:55.120Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/pubsub.googleapis.com  x-goog-user-project=444153208139
+[debug] [2026-06-30T23:18:55.121Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/storage.googleapis.com [none]
+[debug] [2026-06-30T23:18:55.121Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/storage.googleapis.com  x-goog-user-project=444153208139
+[debug] [2026-06-30T23:18:56.156Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/pubsub.googleapis.com 200
+[debug] [2026-06-30T23:18:56.156Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/pubsub.googleapis.com [omitted]
+[info] +  functions: required API pubsub.googleapis.com is enabled 
+[debug] [2026-06-30T23:18:56.169Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/eventarc.googleapis.com 200
+[debug] [2026-06-30T23:18:56.169Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/eventarc.googleapis.com [omitted]
+[warn] !  functions: missing required API eventarc.googleapis.com. Enabling now... 
+[debug] [2026-06-30T23:18:56.169Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:56.169Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:56.169Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/444153208139/services/eventarc.googleapis.com:enable [none]
+[debug] [2026-06-30T23:18:56.169Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/444153208139/services/eventarc.googleapis.com:enable  x-goog-user-project=444153208139
+[debug] [2026-06-30T23:18:56.176Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/run.googleapis.com 200
+[debug] [2026-06-30T23:18:56.176Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/run.googleapis.com [omitted]
+[warn] !  functions: missing required API run.googleapis.com. Enabling now... 
+[debug] [2026-06-30T23:18:56.176Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:56.177Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:18:56.177Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/444153208139/services/run.googleapis.com:enable [none]
+[debug] [2026-06-30T23:18:56.177Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/444153208139/services/run.googleapis.com:enable  x-goog-user-project=444153208139
+[debug] [2026-06-30T23:18:56.189Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/storage.googleapis.com 200
+[debug] [2026-06-30T23:18:56.189Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/444153208139/services/storage.googleapis.com [omitted]
+[info] +  functions: required API storage.googleapis.com is enabled 
+[debug] [2026-06-30T23:18:56.881Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/444153208139/services/run.googleapis.com:enable 200
+[debug] [2026-06-30T23:18:56.881Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/444153208139/services/run.googleapis.com:enable [omitted]
+[debug] [2026-06-30T23:18:57.138Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/444153208139/services/eventarc.googleapis.com:enable 200
+[debug] [2026-06-30T23:18:57.138Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/444153208139/services/eventarc.googleapis.com:enable [omitted]
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[debug] [2026-06-30T23:19:07.152Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:07.152Z] Checked if tokens are valid: true, expires at: 1782865006832
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2026-06-30T23:19:07.153Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:07.153Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:07.153Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2026-06-30T23:19:07.153Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/pubsub.googleapis.com:generateServiceIdentity  x-goog-user-project=444153208139
+[debug] [2026-06-30T23:19:07.153Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/pubsub.googleapis.com:generateServiceIdentity {}
+[debug] [2026-06-30T23:19:07.154Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2026-06-30T23:19:07.154Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/eventarc.googleapis.com:generateServiceIdentity  x-goog-user-project=444153208139
+[debug] [2026-06-30T23:19:07.154Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/eventarc.googleapis.com:generateServiceIdentity {}
+[debug] [2026-06-30T23:19:08.508Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2026-06-30T23:19:08.508Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-444153208139@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"106473733283024248545"}}
+[debug] [2026-06-30T23:19:08.611Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2026-06-30T23:19:08.611Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/444153208139/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-444153208139@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"112960316703630642036"}}
+[debug] [2026-06-30T23:19:08.612Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:08.612Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:08.612Z] >>> [apiv2][query] GET https://compute.googleapis.com/compute/v1/projects/444153208139 [none]
+[debug] [2026-06-30T23:19:09.045Z] <<< [apiv2][status] GET https://compute.googleapis.com/compute/v1/projects/444153208139 403
+[debug] [2026-06-30T23:19:09.045Z] <<< [apiv2][body] GET https://compute.googleapis.com/compute/v1/projects/444153208139 {"error":{"code":403,"message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"serviceTitle":"Compute Engine API","containerInfo":"444153208139","consumer":"projects/444153208139","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139","service":"compute.googleapis.com"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139"}]}]}}
+[debug] [2026-06-30T23:19:09.045Z] unable to look up default compute service account. Falling back to 444153208139-compute@developer.gserviceaccount.com. Error: {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"serviceTitle":"Compute Engine API","containerInfo":"444153208139","consumer":"projects/444153208139","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139","service":"compute.googleapis.com"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139"}]}]}},"response":{"statusCode":403}},"exit":1,"message":"Request to https://compute.googleapis.com/compute/v1/projects/444153208139 had HTTP Error: 403, Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","status":403}
+[debug] [2026-06-30T23:19:09.046Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:09.046Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:09.046Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/444153208139:getIamPolicy [none]
+[debug] [2026-06-30T23:19:10.049Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/444153208139:getIamPolicy 200
+[debug] [2026-06-30T23:19:10.049Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/444153208139:getIamPolicy {"version":1,"etag":"BwZVgM8ngdg=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:444153208139@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-444153208139@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-444153208139@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:444153208139@cloudservices.gserviceaccount.com","serviceAccount:bookverse-8147a@appspot.gserviceaccount.com","serviceAccount:444153208139-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com"]},{"role":"roles/firebasemods.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firebasemods.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-444153208139@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:Douglas1201.santos@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-444153208139@serverless-robot-prod.iam.gserviceaccount.com"]}]}
+[debug] [2026-06-30T23:19:10.049Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:10.049Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:10.049Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/444153208139:setIamPolicy [none]
+[debug] [2026-06-30T23:19:10.049Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/444153208139:setIamPolicy {"policy":{"version":1,"etag":"BwZVgM8ngdg=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:444153208139@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-444153208139@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-444153208139@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:444153208139@cloudservices.gserviceaccount.com","serviceAccount:bookverse-8147a@appspot.gserviceaccount.com","serviceAccount:444153208139-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com"]},{"role":"roles/firebasemods.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firebasemods.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-444153208139@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com","serviceAccount:service-444153208139@gcp-sa-pubsub.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:Douglas1201.santos@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-444153208139@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/run.invoker","members":["serviceAccount:444153208139-compute@developer.gserviceaccount.com"]},{"role":"roles/eventarc.eventReceiver","members":["serviceAccount:444153208139-compute@developer.gserviceaccount.com"]}]},"updateMask":"bindings"}
+[debug] [2026-06-30T23:19:11.152Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/444153208139:setIamPolicy 200
+[debug] [2026-06-30T23:19:11.153Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/444153208139:setIamPolicy {"version":1,"etag":"BwZVgM/PK7w=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:444153208139@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-444153208139@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-444153208139@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:444153208139-compute@developer.gserviceaccount.com","serviceAccount:444153208139@cloudservices.gserviceaccount.com","serviceAccount:bookverse-8147a@appspot.gserviceaccount.com"]},{"role":"roles/eventarc.eventReceiver","members":["serviceAccount:444153208139-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com"]},{"role":"roles/firebasemods.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firebasemods.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-444153208139@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-444153208139@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@bookverse-8147a.iam.gserviceaccount.com","serviceAccount:service-444153208139@gcp-sa-pubsub.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:Douglas1201.santos@gmail.com"]},{"role":"roles/run.invoker","members":["serviceAccount:444153208139-compute@developer.gserviceaccount.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-444153208139@serverless-robot-prod.iam.gserviceaccount.com"]}]}
+[debug] [2026-06-30T23:19:11.154Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:11.154Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:11.154Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a [none]
+[debug] [2026-06-30T23:19:11.371Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a 200
+[debug] [2026-06-30T23:19:11.371Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/bookverse-8147a {"projectNumber":"444153208139","projectId":"bookverse-8147a","lifecycleState":"ACTIVE","name":"BookVerse","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-06-28T16:27:34.659Z"}
+[debug] [2026-06-30T23:19:11.371Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:11.371Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:11.371Z] >>> [apiv2][query] GET https://compute.googleapis.com/compute/v1/projects/444153208139 [none]
+[debug] [2026-06-30T23:19:11.603Z] <<< [apiv2][status] GET https://compute.googleapis.com/compute/v1/projects/444153208139 403
+[debug] [2026-06-30T23:19:11.604Z] <<< [apiv2][body] GET https://compute.googleapis.com/compute/v1/projects/444153208139 {"error":{"code":403,"message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"consumer":"projects/444153208139","containerInfo":"444153208139","service":"compute.googleapis.com","serviceTitle":"Compute Engine API","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139"}]}]}}
+[debug] [2026-06-30T23:19:11.604Z] unable to look up default compute service account. Falling back to 444153208139-compute@developer.gserviceaccount.com. Error: {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"consumer":"projects/444153208139","containerInfo":"444153208139","service":"compute.googleapis.com","serviceTitle":"Compute Engine API","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139"}]}]}},"response":{"statusCode":403}},"exit":1,"message":"Request to https://compute.googleapis.com/compute/v1/projects/444153208139 had HTTP Error: 403, Compute Engine API has not been used in project 444153208139 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=444153208139 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","status":403}
+[debug] [2026-06-30T23:19:11.605Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:11.605Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:11.605Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbilling.googleapis.com [none]
+[debug] [2026-06-30T23:19:11.605Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbilling.googleapis.com  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:19:11.922Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbilling.googleapis.com 200
+[debug] [2026-06-30T23:19:11.922Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbilling.googleapis.com [omitted]
+[debug] [2026-06-30T23:19:11.922Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:11.922Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:11.922Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbilling.googleapis.com:enable [none]
+[debug] [2026-06-30T23:19:11.922Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbilling.googleapis.com:enable  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:19:12.936Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbilling.googleapis.com:enable 200
+[debug] [2026-06-30T23:19:12.937Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/bookverse-8147a/services/cloudbilling.googleapis.com:enable [omitted]
+[debug] [2026-06-30T23:19:22.950Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:22.950Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:22.950Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/bookverse-8147a/billingInfo [none]
+[debug] [2026-06-30T23:19:22.950Z] >>> [apiv2][(partial)header] GET https://cloudbilling.googleapis.com/v1/projects/bookverse-8147a/billingInfo  x-goog-user-project=bookverse-8147a
+[debug] [2026-06-30T23:19:24.285Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/bookverse-8147a/billingInfo 200
+[debug] [2026-06-30T23:19:24.285Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/bookverse-8147a/billingInfo {"name":"projects/bookverse-8147a/billingInfo","projectId":"bookverse-8147a","billingAccountName":"billingAccounts/017D0C-8B2835-3F65CE","billingEnabled":true}
+[debug] [2026-06-30T23:19:24.286Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:24.286Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:24.286Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2026-06-30T23:19:26.651Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2026-06-30T23:19:26.651Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/gcf-v2-uploads-444153208139.us-central1.cloudfunctions.appspot.com/6ade27f2-9d4d-49d8-bc0b-f04ee2a38fcf.zip?GoogleAccessId=service-444153208139@gcf-admin-robot.iam.gserviceaccount.com&Expires=1782863406&Signature=XDbClAHZNoNY9%2BLA3lwJqxulq5JxoQHQ4IT9ZqCZDoKCOlyVwfOY0wlVGE%2FG0CaZee%2B8kIkIFVe4ho053BBsaGF4A8O9hkJ7l1SrZFxByDaV5vzueMFWwV7CiA%2BnDKXJnrf0eV79VSExHRKatVPuwXaWt7z7Bf0t5K4mz9XCOGGs2KSuRprG4MIhI5npwVVcjJo1lUM0%2FCBhhBD0viOaCnkHcw6ibQvqycgPdJXxUm2kC0RIa6SN9OOq%2BJ6IqlUu1HdW9PieashbDq9omj8wbMfKbrndNXgYGEuXubGLOZFuxtWQfPPow119%2Bgaf4whC5qEKtVOHf8mpEab%2B81AG1w%3D%3D","storageSource":{"bucket":"gcf-v2-uploads-444153208139.us-central1.cloudfunctions.appspot.com","object":"6ade27f2-9d4d-49d8-bc0b-f04ee2a38fcf.zip"}}
+[debug] [2026-06-30T23:19:26.651Z] >>> [apiv2][query] PUT https://storage.googleapis.com/gcf-v2-uploads-444153208139.us-central1.cloudfunctions.appspot.com/6ade27f2-9d4d-49d8-bc0b-f04ee2a38fcf.zip GoogleAccessId=service-444153208139%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1782863406&Signature=XDbClAHZNoNY9%2BLA3lwJqxulq5JxoQHQ4IT9ZqCZDoKCOlyVwfOY0wlVGE%2FG0CaZee%2B8kIkIFVe4ho053BBsaGF4A8O9hkJ7l1SrZFxByDaV5vzueMFWwV7CiA%2BnDKXJnrf0eV79VSExHRKatVPuwXaWt7z7Bf0t5K4mz9XCOGGs2KSuRprG4MIhI5npwVVcjJo1lUM0%2FCBhhBD0viOaCnkHcw6ibQvqycgPdJXxUm2kC0RIa6SN9OOq%2BJ6IqlUu1HdW9PieashbDq9omj8wbMfKbrndNXgYGEuXubGLOZFuxtWQfPPow119%2Bgaf4whC5qEKtVOHf8mpEab%2B81AG1w%3D%3D
+[debug] [2026-06-30T23:19:26.651Z] >>> [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-444153208139.us-central1.cloudfunctions.appspot.com/6ade27f2-9d4d-49d8-bc0b-f04ee2a38fcf.zip [stream]
+[debug] [2026-06-30T23:19:27.163Z] <<< [apiv2][status] PUT https://storage.googleapis.com/gcf-v2-uploads-444153208139.us-central1.cloudfunctions.appspot.com/6ade27f2-9d4d-49d8-bc0b-f04ee2a38fcf.zip 200
+[debug] [2026-06-30T23:19:27.163Z] <<< [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-444153208139.us-central1.cloudfunctions.appspot.com/6ade27f2-9d4d-49d8-bc0b-f04ee2a38fcf.zip [omitted]
+[info] +  functions: functions source uploaded successfully 
+[info] i  functions: creating Node.js 20 (2nd Gen) function onBookProgressUpdate(us-central1)... 
+[debug] [2026-06-30T23:19:27.168Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:27.168Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:27.168Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions functionId=onBookProgressUpdate
+[debug] [2026-06-30T23:19:27.168Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions {"name":"projects/bookverse-8147a/locations/us-central1/functions/onBookProgressUpdate","buildConfig":{"runtime":"nodejs20","entryPoint":"onBookProgressUpdate","source":{"storageSource":{"bucket":"gcf-v2-uploads-444153208139.us-central1.cloudfunctions.appspot.com","object":"6ade27f2-9d4d-49d8-bc0b-f04ee2a38fcf.zip"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}},"serviceConfig":{"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"bookverse-8147a\",\"storageBucket\":\"bookverse-8147a.firebasestorage.app\"}","GCLOUD_PROJECT":"bookverse-8147a","EVENTARC_CLOUD_EVENT_SOURCE":"projects/bookverse-8147a/locations/us-central1/services/onBookProgressUpdate","FUNCTION_SIGNATURE_TYPE":"cloudevent","FUNCTION_TARGET":"onBookProgressUpdate","LOG_EXECUTION_ID":"true"},"ingressSettings":null,"timeoutSeconds":null,"serviceAccountEmail":null,"availableMemory":"256Mi","minInstanceCount":null,"maxInstanceCount":null,"maxInstanceRequestConcurrency":80,"availableCpu":"1","vpcConnector":null,"vpcConnectorEgressSettings":null,"directVpcNetworkInterface":null,"directVpcEgress":null},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"cd1ded68ec358ac3932841ea19452f48887fa51b"},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.updated","retryPolicy":"RETRY_POLICY_DO_NOT_RETRY","eventFilters":[{"attribute":"database","value":"(default)"},{"attribute":"namespace","value":"(default)"},{"attribute":"document","value":"users/{userId}/books/{bookId}","operator":"match-path-pattern"}],"triggerRegion":"nam5"}}
+[debug] [2026-06-30T23:19:44.466Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions 400
+[debug] [2026-06-30T23:19:44.466Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions {"error":{"code":400,"message":"Validation failed for trigger projects/bookverse-8147a/locations/nam5/triggers/onbookprogressupdate-618702: Invalid resource state for \"\": Permission denied while using the Eventarc Service Agent. If you recently started to use Eventarc, it may take a few minutes before all necessary permissions are propagated to the Service Agent. Otherwise, verify that it has Eventarc Service Agent role.","status":"FAILED_PRECONDITION"}}
+[warn] !  functions: Request to https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions?functionId=onBookProgressUpdate had HTTP Error: 400, Validation failed for trigger projects/bookverse-8147a/locations/nam5/triggers/onbookprogressupdate-618702: Invalid resource state for "": Permission denied while using the Eventarc Service Agent. If you recently started to use Eventarc, it may take a few minutes before all necessary permissions are propagated to the Service Agent. Otherwise, verify that it has Eventarc Service Agent role. 
+[warn] !  functions: Since this is your first time using 2nd gen functions, we need a little bit longer to finish setting everything up. Retry the deployment in a few minutes. 
+[warn] !  functions:  failed to create function projects/bookverse-8147a/locations/us-central1/functions/onBookProgressUpdate 
+[error] Failed to create function projects/bookverse-8147a/locations/us-central1/functions/onBookProgressUpdate
+[warn] !  functions: Deploys failed. Skipping deletes. 
+[debug] [2026-06-30T23:19:44.471Z] Total Function Deployment time: 17301
+[debug] [2026-06-30T23:19:44.471Z] 1 Functions Deployed
+[debug] [2026-06-30T23:19:44.471Z] 1 Functions Errored
+[debug] [2026-06-30T23:19:44.471Z] 0 Function Deployments Aborted
+[debug] [2026-06-30T23:19:44.471Z] Average Function Deployment time: 17300
+[info] 
+[info] Functions deploy had errors with the following functions:
+	onBookProgressUpdate(us-central1)
+[debug] [2026-06-30T23:19:44.611Z] No lifecycle hook configured for event: afterInstall
+[debug] [2026-06-30T23:19:44.612Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:44.612Z] Checked if tokens are valid: true, expires at: 1782865006832
+[debug] [2026-06-30T23:19:44.612Z] >>> [apiv2][query] GET https://artifactregistry.googleapis.com/v1/projects/bookverse-8147a/locations/us-central1/repositories/gcf-artifacts [none]
+[debug] [2026-06-30T23:19:45.787Z] <<< [apiv2][status] GET https://artifactregistry.googleapis.com/v1/projects/bookverse-8147a/locations/us-central1/repositories/gcf-artifacts 404
+[debug] [2026-06-30T23:19:45.787Z] <<< [apiv2][body] GET https://artifactregistry.googleapis.com/v1/projects/bookverse-8147a/locations/us-central1/repositories/gcf-artifacts {"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}
+[debug] [2026-06-30T23:19:45.787Z] Failed to check artifact cleanup policy for region us-central1: Request to https://artifactregistry.googleapis.com/v1/projects/bookverse-8147a/locations/us-central1/repositories/gcf-artifacts had HTTP Error: 404, Requested entity was not found. {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"Request to https://artifactregistry.googleapis.com/v1/projects/bookverse-8147a/locations/us-central1/repositories/gcf-artifacts had HTTP Error: 404, Requested entity was not found.","status":404}
+[debug] [2026-06-30T23:19:45.787Z] Functions deploy failed.
+[debug] [2026-06-30T23:19:45.787Z] {
+  "endpoint": {
+    "id": "onBookProgressUpdate",
+    "project": "bookverse-8147a",
+    "region": "us-central1",
+    "entryPoint": "onBookProgressUpdate",
+    "platform": "gcfv2",
+    "runtime": "nodejs20",
+    "eventTrigger": {
+      "eventType": "google.cloud.firestore.document.v1.updated",
+      "retry": false,
+      "eventFilters": {
+        "database": "(default)",
+        "namespace": "(default)"
+      },
+      "eventFilterPathPatterns": {
+        "document": "users/{userId}/books/{bookId}"
+      },
+      "region": "nam5"
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "concurrency": 80,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"bookverse-8147a\",\"storageBucket\":\"bookverse-8147a.firebasestorage.app\"}",
+      "GCLOUD_PROJECT": "bookverse-8147a",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/bookverse-8147a/locations/us-central1/services/onBookProgressUpdate"
+    },
+    "codebase": "default",
+    "cpu": 1,
+    "targetedByOnly": false,
+    "hash": "cd1ded68ec358ac3932841ea19452f48887fa51b"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/bookverse-8147a/locations/us-central1/functions/onBookProgressUpdate"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/bookverse-8147a/locations/us-central1/functions/onBookProgressUpdate",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "Validation failed for trigger projects/bookverse-8147a/locations/nam5/triggers/onbookprogressupdate-618702: Invalid resource state for \"\": Permission denied while using the Eventarc Service Agent. If you recently started to use Eventarc, it may take a few minutes before all necessary permissions are propagated to the Service Agent. Otherwise, verify that it has Eventarc Service Agent role.",
+            "status": "FAILED_PRECONDITION"
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "Request to https://cloudfunctions.googleapis.com/v2/projects/bookverse-8147a/locations/us-central1/functions?functionId=onBookProgressUpdate had HTTP Error: 400, Validation failed for trigger projects/bookverse-8147a/locations/nam5/triggers/onbookprogressupdate-618702: Invalid resource state for \"\": Permission denied while using the Eventarc Service Agent. If you recently started to use Eventarc, it may take a few minutes before all necessary permissions are propagated to the Service Agent. Otherwise, verify that it has Eventarc Service Agent role.",
+      "status": 400
+    },
+    "status": 400,
+    "code": 400
+  }
+}
+[debug] [2026-06-30T23:19:45.857Z] Error: Failed to create function onBookProgressUpdate in region us-central1
+    at C:\Users\Douglas\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:332:27
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Fabricator.createV2Function (C:\Users\Douglas\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:311:30)
+    at async Fabricator.createEndpoint (C:\Users\Douglas\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:153:13)
+    at async Fabricator.wrapOperation (C:\Users\Douglas\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:138:13)
+    at async Promise.all (index 0)
+    at async Promise.allSettled (index 0)
+    at async Fabricator.applyPlan (C:\Users\Douglas\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:77:45)
+    at async release (C:\Users\Douglas\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\index.js:87:21)
+    at async chain (C:\Users\Douglas\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:45:9)
+[error] 
+[error] Error: There was an error deploying functions
