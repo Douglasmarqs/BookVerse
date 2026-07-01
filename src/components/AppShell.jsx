@@ -2,8 +2,9 @@
 //
 // Header + barra de navegação inferior compartilhados entre as telas
 // logadas que fazem parte da navegação principal (Dashboard, Biblioteca,
-// e futuramente Lumi/Social/Perfil). Telas de detalhe (ex: Livro) não
-// usam o AppShell — usam cabeçalho próprio com botão de voltar.
+// Lumi, Social, Perfil). Telas de detalhe (ex: Livro, Perfil de outro
+// usuário) não usam o AppShell — usam cabeçalho próprio com botão de
+// voltar.
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import { BookVerseLogo } from './BookVerseLogo'
@@ -12,8 +13,8 @@ const TABS = [
   { key: 'home', label: 'Início', path: '/dashboard' },
   { key: 'library', label: 'Biblioteca', path: '/biblioteca' },
   { key: 'lumi', label: 'Lumi', path: '/lumi' },
-  { key: 'social', label: 'Social', path: null },
-  { key: 'profile', label: 'Perfil', path: null },
+  { key: 'social', label: 'Social', path: '/social', matchPaths: ['/social', '/amigos', '/ranking'] },
+  { key: 'profile', label: 'Perfil', path: '/perfil' },
 ]
 
 export function AppShell({ children }) {
@@ -44,7 +45,8 @@ export function AppShell({ children }) {
 
       <nav className="bv-tabbar">
         {TABS.map((tab) => {
-          const isActive = Boolean(tab.path) && location.pathname.startsWith(tab.path)
+          const pathsToCheck = tab.matchPaths || [tab.path]
+          const isActive = Boolean(tab.path) && pathsToCheck.some((p) => location.pathname.startsWith(p))
           return (
             <button
               key={tab.key}

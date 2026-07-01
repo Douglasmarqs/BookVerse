@@ -32,7 +32,7 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from 'firebase/auth'
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
+import { doc, getDoc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore'
 import { auth, db } from '../firebase/config'
 
 const AuthContext = createContext(null)
@@ -46,8 +46,11 @@ async function ensureUserProfile(user, { name } = {}) {
   const existing = await getDoc(userRef)
   if (existing.exists()) return
 
+  const finalName = name || user.displayName || ''
+
   await setDoc(userRef, {
-    name: name || user.displayName || '',
+    name: finalName,
+    nameLower: finalName.toLowerCase(), // usado na busca de pessoas (Documento 15)
     email: user.email,
     username: null,
     bio: '',
@@ -96,6 +99,20 @@ export function AuthProvider({ children }) {
         // aqui; a tela de Login trata erros do clique inicial separadamente.
       })
   }, [])
+
+  // Self-heal: contas criadas antes do campo "nameLower" existir (usado na
+  // busca de pessoas, Documento 15) recebem o campo automaticamente no
+  // próximo login, sem precisar de migração manual no Console.
+  useEffect(() => {
+    if (!currentUser) return
+    const userRef = doc(db, 'users', currentUser.uid)
+    getDoc(userRef).then((snap) => {
+      const data = snap.data()
+      if (data && !data.nameLower && data.name) {
+        updateDoc(userRef, { nameLower: data.name.toLowerCase() }).catch(() => {})
+      }
+    })
+  }, [currentUser])
 
   async function signup({ name, email, password }) {
     const credential = await createUserWithEmailAndPassword(auth, email, password)

@@ -34,15 +34,24 @@ export default function LivroDetalhe() {
   useEffect(() => {
     if (!currentUser) return
     const ref = doc(db, 'users', currentUser.uid, 'books', bookId)
-    const unsubscribe = onSnapshot(ref, (snap) => {
-      if (!snap.exists()) {
+    const unsubscribe = onSnapshot(
+      ref,
+      (snap) => {
+        if (!snap.exists()) {
+          setNotFound(true)
+          return
+        }
+        const data = { id: snap.id, ...snap.data() }
+        setBook(data)
+        setPageInput(String(data.currentPage ?? 0))
+      },
+      (error) => {
+        // Falha de permissão ou rede — trata como "não encontrado"
+        // para não deixar a tela presa em "Carregando..." infinitamente.
+        console.error('Erro ao carregar livro:', error.code || error.message)
         setNotFound(true)
-        return
       }
-      const data = { id: snap.id, ...snap.data() }
-      setBook(data)
-      setPageInput(String(data.currentPage ?? 0))
-    })
+    )
     return unsubscribe
   }, [currentUser, bookId])
 

@@ -91,13 +91,16 @@ export async function addBook(uid, { title, author, totalPages, coverUrl = null,
 }
 
 export async function updateProgress(uid, bookId, currentPage, totalPages) {
-  const safePage =
-    totalPages > 0
-      ? Math.max(0, Math.min(Number(currentPage) || 0, totalPages))
-      : Math.max(0, Number(currentPage) || 0)
+  // Math.floor garante que enviamos inteiros ao Firestore — evita que o
+  // tipo float quebre a validação isValidBook nas regras de segurança.
+  const parsed = Math.floor(Number(currentPage) || 0)
+  const total = Math.floor(Number(totalPages) || 0)
+  const safePage = total > 0
+    ? Math.max(0, Math.min(parsed, total))
+    : Math.max(0, parsed)
 
   const isFirstProgress = safePage > 0
-  const isFinished = totalPages > 0 && safePage >= totalPages
+  const isFinished = total > 0 && safePage >= total
 
   const payload = {
     currentPage: safePage,
@@ -111,7 +114,6 @@ export async function updateProgress(uid, bookId, currentPage, totalPages) {
     payload.status = 'lendo'
   }
 
-  // A Cloud Function "onBookProgressUpdate" cuida do resto a partir daqui.
   await updateDoc(doc(db, 'users', uid, 'books', bookId), payload)
 }
 

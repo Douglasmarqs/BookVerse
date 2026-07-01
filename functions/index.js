@@ -26,7 +26,7 @@
 // exigiria salvar o fuso horário do usuário no perfil e ainda está fora do
 // escopo desta primeira versão.
 
-const { onDocumentUpdated } = require('firebase-functions/v2/firestore')
+const { onDocumentUpdated, onDocumentCreated, onDocumentDeleted } = require('firebase-functions/v2/firestore')
 const { initializeApp } = require('firebase-admin/app')
 const { getFirestore, FieldValue } = require('firebase-admin/firestore')
 
@@ -120,3 +120,45 @@ exports.onBookProgressUpdate = onDocumentUpdated('users/{userId}/books/{bookId}'
     }
   })
 })
+
+// ---------- Sistema Social ----------
+
+// Quando o usuário A aceita o pedido do usuário B (cria
+// users/A/friends/B), esta função espelha automaticamente a amizade
+// criando users/B/friends/A. Sem isso, só A enxergaria B como amigo —
+// o cliente não pode escrever na subcoleção de outra pessoa (regra de
+// segurança). A função também tenta buscar os dados mais recentes de A
+// para preencher o registro do lado de B com nome e foto corretos.
+exports.onFriendAdded = onDocumentCreated('users/{userId}/friends/{friendUid}', async (event) => {
+  const { userId, friendUid } = event.params
+
+  // Se o documento espelhado já existe, não faz nada (evita loop
+  // infinito: A aceita → cria B/friends/A → dispara essa função pra
+  // B → tentaria criar A/friends/B que já existe).
+  const mirrorRef = db.collection('users').doc(friendUid).collection('friends').doc(userId)
+  const existing = await mirrorRef.get()
+  if (existing.exists) return
+
+  // Busca os dados públicos de A para preencher o espelho em B.
+  const userSnap = await db.collection('users').doc(userId).get()
+  const userData = userSnap.data() || {}
+
+  await mirrorRef.set({
+    since: event.data.data().since || FieldValue.serverTimestamp(),
+    name: userData.name || null,
+    photoURL: userData.photoURL || null,
+  })
+})
+
+// Quando o usuário A remove B dos amigos (apaga users/A/friends/B),
+// esta função remove simetricamente users/B/friends/A para que a
+// amizade desapareça dos dois lados.
+exports.onFriendRemoved = onDocumentDeleted('users/{userId}/friends/{friendUid}', async (event) => {
+  const { userId, friendUid } = event.params
+  const mirrorRef = db.collection('users').doc(friendUid).collection('friends').doc(userId)
+  const existing = await mirrorRef.get()
+  if (existing.exists) {
+    await mirrorRef.delete()
+  }
+})
+

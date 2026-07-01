@@ -15,6 +15,11 @@ import Biblioteca from './pages/Biblioteca'
 import LivroDetalhe from './pages/LivroDetalhe'
 import Configuracoes from './pages/Configuracoes'
 import Lumi from './pages/Lumi'
+import Social from './pages/Social'
+import Amigos from './pages/Amigos'
+import Perfil from './pages/Perfil'
+import PerfilUsuario from './pages/PerfilUsuario'
+import Ranking from './pages/Ranking'
 
 export default function App() {
   return (
@@ -64,6 +69,46 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <Lumi />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/social"
+              element={
+                <ProtectedRoute>
+                  <Social />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/amigos"
+              element={
+                <ProtectedRoute>
+                  <Amigos />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/ranking"
+              element={
+                <ProtectedRoute>
+                  <Ranking />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/perfil"
+              element={
+                <ProtectedRoute>
+                  <Perfil />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/usuario/:uid"
+              element={
+                <ProtectedRoute>
+                  <PerfilUsuario />
                 </ProtectedRoute>
               }
             />
